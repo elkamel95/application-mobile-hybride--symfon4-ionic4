@@ -1,0 +1,108 @@
+fos_rest:
+    disable_csrf_role: ROLE_API
+    param_fetcher_listener:
+        enabled: true
+        force: false
+        service: null
+    view:
+        view_response_listener:
+            enabled: true
+            force: false
+            service: null
+        formats:
+            xml: false
+            json: true
+            Html: false
+        default_engine: twig
+        force_redirects:
+            html: true
+        mime_types:
+            enabled: false
+            service: null
+            formats: {  }
+        templating_formats:
+            html: true
+        failed_validation: 400
+        empty_content: 204
+        serialize_null: false
+    format_listener:
+        rules:
+            -
+                path: ^/
+                priorities:
+                    - json
+                fallback_format: json
+                prefer_extension: false
+                host: null
+                methods: null
+                attributes: {  }
+                stop: false
+        enabled: true
+        service: null
+    exception:
+        codes:
+            Symfony\Component\Routing\Exception\ResourceNotFoundException: 404
+            Doctrine\ORM\OptimisticLockException: 409
+        messages:
+            Symfony\Component\Routing\Exception\ResourceNotFoundException: true
+        exception_controller: 'fos_rest.exception.controller:showAction'
+        enabled: true
+        service: null
+        debug: true
+    allowed_methods_listener:
+        enabled: true
+        service: null
+    access_denied_listener:
+        enabled: true
+        formats:
+            json: true
+        service: null
+    body_listener:
+        enabled: true
+        service: null
+        default_format: null
+        throw_exception_on_unsupported_content_type: false
+        decoders:
+            json: fos_rest.decoder.json
+            xml: fos_rest.decoder.xml
+        array_normalizer:
+            service: null
+            forms: false
+    body_converter:
+        enabled: true
+        validate: false
+        validation_errors_argument: validationErrors
+    unauthorized_challenge: null
+    cache_dir: 'C:\Users\elkamel\my-project\var\cache\dev/fos_rest'
+    routing_loader:
+    
+        include_format: false
+    service:
+        router: router
+        templating: templating
+        serializer: null
+        view_handler: fos_rest.view_handler.default
+        inflector: fos_rest.inflector.doctrine
+        validator: validator
+    serializer:
+        version: null
+        groups: {  }
+        serialize_null: false
+    zone: {  }
+    versioning:
+        enabled: false
+        default_version: null
+        resolvers:
+            query:
+                enabled: true
+                parameter_name: version
+            custom_header:
+                enabled: true
+                header_name: X-Accept-Version
+            media_type:
+                enabled: true
+                regex: '/(v|version)=(?P<version>[0-9\.]+)/'
+        guessing_order:
+            - query
+            - custom_header
+            - media_type

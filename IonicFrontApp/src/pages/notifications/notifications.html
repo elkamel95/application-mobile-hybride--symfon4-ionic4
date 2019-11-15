@@ -1,0 +1,128 @@
+<!--
+  Generated template for the NotificationsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Notifications</ion-title>
+    <ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+        <button ion-button tappable (click)="analyse()">
+        <ion-icon name="analyse"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="QrCode()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      
+    </tr>
+    
+  </tbody>
+</table>
+  
+<h3>Titre de votre médicament :{{medicament.name}}</h3>
+<div *ngIf='itsTime == true' >
+      <button ion-button (click)="buttonPris()">j'ai pris </button>
+      <button ion-button (click)="buttonStop()">je n'ai  peut pas pris </button>
+      <button ion-button (click)="buttonRepos()">Attend moi 15min  </button>
+
+</div>
+ <button ion-button  (click)="analyse()">
+      </button>
+<div *ngIf='speekFinal == 0'>
+   <h3 color="primary" size="50">votre prochain comprimée sera a:{{hh}}h:{{mm}}m</h3>
+
+<h1>il vous reste que :{{countDownMM}} Second</h1>
+</div>
+    <ion-item *ngFor="let att of compList; let idx = index">
+     <ion-label color="primary">Comprime:{{idx+1}}</ion-label>
+                <ion-label>{{att.heurepris | date :'HH:mm:ss  ': 'UTC'}}</ion-label>
+                
+                     <ion-label color="primary"><div style="width:50%" *ngIf='att.alarme._demarer == true'>
+
+                  <img src="../../assets/imgs/true.png">
+                       <ion-label color="primary">déjà  pris</ion-label>
+
+                </div>
+
+<div *ngIf='att.alarme._demarer ==false'>
+<table>
+
+<tr>
+  <td>
+ <div *ngIf='retardComp == false'>
+                     <img style="width:50%" src="../../assets/imgs/false.png">
+                        <ion-label color="primary">en attende </ion-label>
+
+ </div>
+  <div *ngIf='retardComp == true'>
+                     <img src="../../assets/imgs/attention.gif">
+              <ion-label color="primary">en retard </ion-label>
+
+
+ </div>
+
+</td>
+<td >
+   <div style="width:50%" *ngIf="ComprimeEnQuestion(hh,mm,att.heurepris | date :'H:mm  ': 'UTC') == true">
+                                      <img src="../../assets/imgs/ready.gif">
+
+                         </div>
+                         </td>
+                         </tr>
+                         </table>
+                </div>
+
+              </ion-label>
+
+ </ion-item>
+   <ion-item>
+      <ion-label>Language</ion-label>
+
+      <ion-select [(ngModel)]="locale">
+        <ion-option value="ru_RU">Russian</ion-option>
+        <ion-option value="en-US">English</ion-option>
+                <ion-option value="fr-FR">french</ion-option>
+                <ion-option value="ar-AR">Arabe</ion-option>
+
+      </ion-select>
+    </ion-item>
+<div *ngIf="QRCODeISHidden">
+  
+    <ion-card *ngIf="created_code">
+
+    <ngx-qrcode [qrc-value]="created_code"></ngx-qrcode>
+
+    <ion-card-content>
+        <h2>Encoded Data</h2>
+
+        <p>{{ created_code }}</p>
+        
+    </ion-card-content>
+</ion-card>
+</div>
+
+{{this.scanner_QR}}
+{{dataSms}}
+</ion-content>

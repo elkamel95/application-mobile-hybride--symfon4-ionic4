@@ -1,0 +1,19 @@
+//arduino send  data
+void sendValues()
+ {
+  //puts # before the values so our app knows what to do with the data
+  //serial badalha eb2sem el instance emta3ek  
+
+  Serial.print('7oute lena donnee emta3ek ');
+  //for loop cycles through 4 sensors and sends values via serial
+  for(int k=0; k<4; k++)
+  {
+    Serial.print(voltageValue[k]);
+    Serial.print('+');
+    //technically not needed but I prefer to break up data values
+    //so they are easier to see when debugging
+  }
+ Serial.print('~'); //used as an end of transmission character - used in app for string length
+ Serial.println();
+ delay(10);        //added a delay to eliminate missed transmissions
+}

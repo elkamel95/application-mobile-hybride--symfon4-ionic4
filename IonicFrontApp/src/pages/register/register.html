@@ -1,0 +1,125 @@
+<!-- -->
+<ion-content class="auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding text-center>
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Inscription</strong> 
+      </h2>
+    </div>
+
+    <!-- Login form -->
+    <form class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="Nom" item-start class="text-primary"></ion-icon>
+Nom        </ion-label>
+        <ion-input type="text" name="nom " [(ngModel)] ='utilisateur.nom'></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="prenom" item-start class="text-primary"></ion-icon>
+          Prenom
+        </ion-label>
+        <ion-input type="text" name="prenom " [(ngModel)] ='utilisateur.prenom'></ion-input>
+      </ion-item>
+       <ion-item>
+        <ion-label floating>
+          <ion-icon name="prenom" item-start class="text-primary"></ion-icon>
+          Tel
+        </ion-label>
+        <ion-input type="number" name="prenom " [(ngModel)] ='utilisateur.tel'></ion-input>
+      </ion-item>
+           <ion-item>
+        <ion-label floating>
+          <ion-icon name="prenom" item-start class="text-primary"></ion-icon>
+          Mot de passe 
+        </ion-label>
+        <ion-input type="password" name="password " [(ngModel)] ='utilisateur.motpasse'></ion-input>
+      </ion-item>
+ <ion-item>
+  <ion-label>Role</ion-label>
+  <ion-select  [(ngModel)] ='utilisateur.role'  name="role">
+
+    <ion-option [value]='1'>
+Suiveur    </ion-option>
+        <ion-option [value]='0'>
+          maladié
+    </ion-option>
+  </ion-select>
+   
+</ion-item>
+<div *ngIf='utilisateur.role == 1'  >
+       <ion-item>
+
+        <ion-label floating>
+          <ion-icon name="email" item-start class="text-primary"></ion-icon>
+          email
+        </ion-label>
+        <ion-input type="email" name="email " [(ngModel)] ='utilisateur.email'></ion-input>
+      </ion-item>
+   
+</div>
+ <div *ngIf='utilisateur.role == 0' >
+
+            <ion-item>
+
+         <ion-label floating>
+          <ion-icon name="age" item-start class="text-primary"></ion-icon>
+          age
+        </ion-label>
+                <ion-input type="number" name="age" [(ngModel)] ='patient.age'></ion-input>
+
+                    </ion-item>
+     <ion-item>
+
+         <ion-label floating>
+          <ion-icon name="Etat" item-start class="text-primary"></ion-icon>
+          Etat
+        </ion-label>
+                <ion-input type="text" name="etat" [(ngModel)] ='patient.etat'></ion-input>
+
+                    </ion-item>
+                                        </div>
+
+    </form>
+
+    <div margin-top>
+      <button ion-button block color="dark" tappable (click)="register()">
+S'INSCRIRE      </button>
+
+      <p text-center ion-text color="secondary">Ou inscrivez-vous avec:
+</p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-twitter">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-gplus">
+              <ion-icon name="logo-googleplus"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="primary" tappable (click)="login()">J'ai un compte
+</span>
+    </div>
+
+  </div>
+</ion-content>

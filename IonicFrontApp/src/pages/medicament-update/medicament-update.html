@@ -1,0 +1,113 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong>Gérer médicaments</strong> 
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+
+
+
+
+
+  <div class="form-group">
+    <label >Name:</label>
+<ion-input class="native-input" [(ngModel)]="medicament.name" ></ion-input>
+    <small id="emailHelp" class="form-text text-muted">quelle est le nom de médicament ?:</small>
+  </div>
+  <div class="form-group">
+    <label >Chronique:</label>
+<ion-input class="native-input" [(ngModel)]="medicament.chronique"  ></ion-input>
+    <small id="emailHelp" class="form-text text-muted">est-ce qu'une maladie chronique ?:</small>
+  </div>
+    <div class="form-group">
+    <label >Duree:</label>
+<ion-input class="native-input" type="number" [(ngModel)]="medicament.duree" ></ion-input>
+    <small id="emailHelp" class="form-text text-muted">quelle est la Durée de traitement ?:</small>
+  </div>
+
+    <div class="form-group">
+    <label >NbComprimeJour:</label>
+<ion-input class="native-input" type="number" [(ngModel)]="nbComprome" ></ion-input>
+    <small id="emailHelp" class="form-text text-muted">combien des comprimés par jour ?:</small>
+  </div>
+   <div class="form-group">
+    <label >Repas:</label>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <ion-list radio-group [(ngModel)]="medicament.repas">
+  <ion-item>
+    <ion-label>oui</ion-label>
+    <ion-radio value="1"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Non</ion-label>
+    <ion-radio value="0" [disabled]="isDisabled" ></ion-radio>
+  </ion-item>
+</ion-list>
+
+  </div>
+   <div class="form-group">
+    <label >Sales:</label>
+
+<ion-list radio-group [(ngModel)]="medicament.sales">
+  <ion-item>
+    <ion-label>oui</ion-label>
+    <ion-radio value="1"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Non</ion-label>
+    <ion-radio value="0" [disabled]="isDisabled"></ion-radio>
+  </ion-item>
+</ion-list>  
+
+  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+     <div class="form-group">
+    <label >Sucre:</label>
+
+<ion-list radio-group [(ngModel)]="medicament.sucre">
+  <ion-item>
+    <ion-label>oui</ion-label>
+    <ion-radio value="1"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Non</ion-label>
+    <ion-radio value="0" [disabled]="isDisabled"></ion-radio>
+  </ion-item>
+</ion-list>
+
+
+  </div>
+
+
+<ion-item *ngFor="let att of anArray; let idx = index">
+     <ion-label color="primary">Comprime:{{att.label}}{{idx+1}}</ion-label>
+   <ion-label>Time</ion-label>
+  <ion-datetime
+  displayFormat="HH:mm" [(ngModel)]="anArray[idx]">
+    
+  </ion-datetime>
+ </ion-item>
+
+
+ <button ion-button full  (click)="goTo()" >let's go</button>
+
+
+
+</ion-content>

@@ -1,0 +1,41 @@
+<!--
+  Generated template for the MedicamentPatientPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+ <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong>Liste Patient</strong> 
+    </ion-title>
+ 
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+<div class="row mb-2">
+	<ion-item *ngFor="let att of items; let idx = index">
+
+    <div class="col-md-4">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+  <strong class="d-inline-block mb-2 text-primary">{{att._patient[0].utilisateur.nom}}</strong>
+          <h2 class="mb-0"></h2>
+
+          <h3 class="mb-2"></h3>
+          <div class="mb-1 text-muted"></div>
+       <button class="card-text mb-auto" (click)="getComprime(att._patient[0].id)" type="button" class="btn btn-warning">vérifier</button>
+       
+
+        </div>
+  
+      </div>
+    </div>
+</ion-item>
+  </div>
+</ion-content>
